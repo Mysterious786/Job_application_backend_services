@@ -65,6 +65,8 @@ public class ReviewServiceImpl implements ReviewService {
           //  assert review != null;
             Company company = review.getCompany();
             company.getReviews().remove(review);
+            //removing from review side and company side
+            review.setCompany(null);
             companyService.updateCompany(company,companyId);
             reviewRepository.deleteById(reviewId);
 
