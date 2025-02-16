@@ -7,4 +7,5 @@ public interface ReviewService {
     boolean addReview(Long companyId, Review review); // what if company don't exist...
     Review getReview(Long companyId, Long reviewId);
     boolean updateReview(Long companyId,Long reviewId, Review review);
+    boolean deleteReview(Long companyId, Long reviewId);
 }

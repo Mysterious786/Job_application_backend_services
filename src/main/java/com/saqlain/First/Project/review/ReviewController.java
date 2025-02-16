@@ -46,10 +46,21 @@ public class ReviewController {
         // review object tells us this is the new updated review
         // companyId helps us to fetch company to which we need to update the review...
         boolean isUpdatedReview = reviewService.updateReview(companyId,reviewId,review);
+
         if(isUpdatedReview)
             return new ResponseEntity<String>("Review updated successfully!",HttpStatus.OK);
         else
             return new ResponseEntity<String>("Error! Not able to update",HttpStatus.NOT_FOUND);
 
+    }
+
+    @DeleteMapping("/reviews/{reviewId}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long companyId, @PathVariable Long reviewId)
+    {
+        boolean isDeleted = reviewService.deleteReview(companyId,reviewId);
+        if(isDeleted)
+            return new ResponseEntity<String>("Review deleted successfully!",HttpStatus.OK);
+        else
+            return new ResponseEntity<String>("Review does not get deleted!",HttpStatus.NOT_FOUND);
     }
 }
